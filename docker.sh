@@ -42,9 +42,11 @@ chain_exists DOCKER nat && iptables -t nat -X DOCKER
 
 iptables -N DOCKER
 iptables -N DOCKER-ISOLATION
+iptables -N DOCKER-USER
 
 iptables -t nat -N DOCKER
 
+iptables -A FORWARD -j DOCKER-USER
 iptables -A FORWARD -j DOCKER-ISOLATION
 add_to_forward ${DOCKER_INT}
 
@@ -110,4 +112,5 @@ if [ `echo ${containers} | wc -c` -gt "1" ]; then
 fi
 
 iptables -A DOCKER-ISOLATION -j RETURN
+iptables -A DOCKER-USER -j RETURN
 iptables -t nat -I DOCKER -i ${DOCKER_INT} -j RETURN

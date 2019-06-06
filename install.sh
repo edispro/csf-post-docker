@@ -8,7 +8,7 @@ CSFPOSTD_PATH="${CSF_CUSTOM_PATH}/post.d"
 
 if [ ! -d ${CSF_CUSTOM_PATH} ]; then
 	echo "** CSF-PRE_POST_SH is not installed **"
-	echo "Get it from https://github.com/juliengk/csf-pre_post_sh"
+	echo "Get it from https://github.com/edispro/csf-pre_post_sh"
 
 	exit 1
 fi
